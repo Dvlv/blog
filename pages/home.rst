@@ -19,3 +19,5 @@ I may have more useful things to talk about on the homepage in the future, but f
 This website should function fine with NoScript and LibreJS. There is only a tiny piece of JS which collapses the nav bar for mobile users.
 
 There is NO tracking, there are NO cookies, there are NO ads. I do not like any of that stuff. 
+
+If you do find anything suspicious, it will be the hosting company (I use shared hosting). Please open an issue at `the github source of this website <https://github.com/Dvlv/blog>`_ and let me know.
