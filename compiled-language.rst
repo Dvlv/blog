@@ -235,7 +235,7 @@ With this in place, I first tackled the function which would get the branch name
     }
     
     
-``getOutput`` was shamelessly stolen from stackoverflow, since it's not something I would ever have been able to figure out by myself.
+``getOutput`` was shamelessly stolen from `this stackoverflow question <https://stackoverflow.com/questions/478898/how-do-i-execute-a-command-and-get-output-of-command-within-c-using-posix>`_, since it's not something I would ever have been able to figure out by myself. 
 
 ``getBranchName`` grabs the output of ``git status`` and splits off the first line, then splits off the last word. This is the current branch name. I must say, converting a string to a stream in order to get the first line from it is not something I've encountered before.
 
@@ -269,7 +269,7 @@ I know how to split a string to an iterable, but now I had to do the reverse to 
     }
         
 
-Again, the hard part of this is stoled from stackoverflow. Imploding the vector into a string and passing it to ``std::system`` was easy enough.
+Again, the hard part of this is stolen from `stackoverflow <https://stackoverflow.com/questions/5689003/how-to-implode-a-vector-of-strings-into-a-string-the-elegant-way>`_. Imploding the vector into a string and passing it to ``std::system`` was easy enough.
 
 Last thing to do is ``usage``. Since this is the same thing every time, I may not show this in future languages.
 
