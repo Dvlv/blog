@@ -606,37 +606,30 @@ Again, ``stat`` and ``origin`` were quite easy to implement:
         fmt.Printf("%s", out);
     }
     
-Trying to implement ``cm`` however, has me stumped. I can't get it to recognise the ``-m`` flag with the speech marks, and there is NO helpful output at all, just "exit code 1";
+Trying to implement ``cm`` however, had me stumped. I couldn't get it to recognise the ``-m`` flag with the speech marks, and there is NO helpful output at all, just "exit code 1";
 
-The best attempt I can come up with is here:
+My colleague who loves Go eventually helped me get ``cm`` working. It turned out that the commit message needed to be a single argument:
 
 
 .. code-block:: go
 
-    func cm(args []string) {
-        cmd_args := []string{"commit", "-m"};
-        args[0] = "'" + args[0];
-        for _, arg := range args {
-            cmd_args = append(cmd_args, arg);
-        }
-        cmd_args[len(cmd_args)-1] = cmd_args[len(cmd_args)-1] + "'";
-        cmd := exec.Command("git", cmd_args...);
-        out, err := cmd.Output();
-        if (err != nil) {
-            fmt.Println("error");
-            log.Fatal(err);
-        }
-        fmt.Printf("%s", out);
+  func cm(args []string) {
+    var message_args []string;
+    args[0] = "'" + args[0];
+    for _, arg := range args {
+        message_args = append(message_args, arg);
     }
+    message_args[len(message_args)-1] = message_args[len(message_args)-1] + "'";
+    full_cmd := strings.Join(message_args, " ");
+    cmd := exec.Command("git","commit", "-m", full_cmd);
+    out, err := cmd.Output();
+    if (err != nil) {
+        fmt.Println("error");
+        log.Fatal(err);
+    }
+    fmt.Printf("%s", out);
+  } 
             
-
-This solution works for a single additional argument, such as ``eg2 cm test``. However, it does *not* work for building a multi-word commit message, e.g. ``eg2 cm testing go``. I have no idea why. Adding a ``Println`` call on my ``cmd_args`` assures me that it reads ``git commit -m 'testing go'`` but for some reason I see nothing but "exit code 1". 
-
-If anyone knows how to fix this, I have left the github repo public `over here <https://github.com/Dvlv/ez-git-go>`_ and some advice would be appreciated. 
-
-I also tried imploding the ``cmd_args`` to a single string and doing ``exec.Command("git", cmd_args_string)`` but that doesn't work at all. 
-
-For this reason, I gave up on the go version without finishing ``cm``.
 
 That's it. I have now written (or at least, attempted to write) a git helper replacement in five compiled languages. 
 
