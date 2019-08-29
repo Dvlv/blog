@@ -4,6 +4,12 @@
 :Category: Linux
 
 
+**Update 07/2019**
+It seems Entroware have released a new version of the Zeus. It's now a 16" machine which features *less* IO than the model I purchased, but comes with 
+a better processor and a 2080 GPU. This means my review is now somewhat obsolete.
+
+------------
+
 The Zeus is a 15 inch High-end Gaming Laptop from the British-based Linux computer company called Entroware.
 
 Since getting a new job, which I do using a laptop running OpenSUSE Tumbleweed, I've been itching for a Linux laptop of my own. Whilst I am able to take my work laptop home, I thought it best to keep personal stuff off of it, since I don't technically own it. I looked around for a laptop which is high-end enough for some intensive programming (including game dev) and runs Linux without problems.
@@ -73,7 +79,7 @@ The 16.04 version of the ubuntu-based distros have an older version of the Nvidi
 
 **Update June 2018** - Nouveau stopped working with my external monitor on Arch. I took a long shot and installed the proprietary nvidia drivers, and they seem to be fine now. I still need to have a second monitor plugged in on boot, since the DM will only display on an external monitor, but once logged in I have display on both screens.
 
-**Update Oct 2018** - NVidia's proprietary drivers are working perfectly fine. Still on Arch and Plasma, with no use for the Kubuntu partition (I'll get rid of it if I run out of space, or get really bored). Due to the issue with the DM only appearing on an external monitor, I've decided to ditch them entirely and I just run ``startx`` manually. This means I can log in from the laptop display itself. Aside from that, all is good now.
+**Update Oct 2018** - Nvidia's proprietary drivers are working perfectly fine. Still on Arch and Plasma, with no use for the Kubuntu partition (I'll get rid of it if I run out of space, or get really bored). Due to the issue with the DM only appearing on an external monitor, I've decided to ditch them entirely and I just run ``startx`` manually. This means I can log in from the laptop display itself. Aside from that, all is good now.
 
 Distro-hopping Adventures
 -------------------------
@@ -93,7 +99,7 @@ I've settled with a dual-boot of Antergos and Kubuntu 16.04. I don't really use 
 Would I recommend this laptop?
 ------------------------------
 
-**Update Oct 2018** - If you want raw performance and don't care about Battery Life or loud fan noise, and you REALLY don't want to get a desktop, then this may be worth a look. Be prepared for some potential distro hopping / driver woes, since NVidia on Linux is NVidia on Linux. Now that drivers are sorted, I'm happy with this purchase, but a small part of me wonders why I didn't just buy a desktop.
+**Update Oct 2018** - If you want raw performance and don't care about Battery Life or loud fan noise, and you REALLY don't want to get a desktop, then this may be worth a look. Be prepared for some potential distro hopping / driver woes, since Nvidia on Linux is Nvidia on Linux. Now that drivers are sorted, I'm happy with this purchase, but a small part of me wonders why I didn't just buy a desktop.
 
 **Original Answer** Probably not. At least not while the Nvidia drivers are so borked. If you are planning on staying with a 16.04 version of ubuntu and don't intend to use it away from a power source much, then it could be fine for you. If I weren't planning on beginning a 3D game project soon I wouldn't get something with a dedicated GPU at all, but I certainly can't recommend something with dual Nvidia graphics at the moment. Also, the fans can get very loud quite quickly. I've invested in a cooling pad to keep the noise down.
 
