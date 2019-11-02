@@ -62,6 +62,7 @@ This first script is assigned to the root ``Control`` node.
 
     func _ready():
         ACCEPT.visible = false
+        TIMER.connect("timeout", TEXT, "_on_Timer_timeout")
 
     func _process(delta):
         if listening:

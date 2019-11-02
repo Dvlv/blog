@@ -92,7 +92,7 @@ Ack
 I've mentioned ack in `a previous post about Flask. <https://www.dvlv.co.uk/how-to-get-flask-to-auto-restart-despite-syntax-errors.html>`_ Ack is somewhat like an alternative to grep. This allows me to do a "Find All" throughout a 
 project in vim.
 
-TODO: Add my .ackrc from work machine here
+`My .ackrc can be found here. <https://github.com/Dvlv/dotfiles/blob/master/ackrc>`_
 
 Relevant vimrc
 ==============
