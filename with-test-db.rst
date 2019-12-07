@@ -26,6 +26,8 @@ I have adapted this to look similar to the decorator I am used to.
                         func(*args, **kwargs)
                     finally:
                         test_db.drop_tables(dbs)
+                        test_db.close()
+
             return test_db_closure
 
         return decorator 
