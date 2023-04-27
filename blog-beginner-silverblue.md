@@ -8,15 +8,16 @@ Fedora Silverblue is a linux distribution very similar to Fedora Workstation, wi
 
 An Immutable Distro typically exhibits two key features:
 
-    - Certain (root-level) directories are mounted read-only, preventing the user of a running system from making any changes to them.
-    - At least one previous "version" of the system is kept, allowing the user to revert to a previous state.
+- Certain (root-level) directories are mounted read-only, preventing the user of a running system from making any changes to them.
+- At least one previous "version" of the system is kept, allowing the user to revert to a previous state.
 
 ### 0.2 Why use an Immutable Distro?
 
 The benefits of an Immutable Distro are twofold:
 
-    - Consistency - When distros are released, the system is likely tested "as-is" to ensure it is working. It is unfeasible for the mapr intainers to then test every possible combination of packages and configurations on top of what's provided. Therefore, the "closer" your system is to the default, the more likely it is to be tested and working, and the more likely it is that you can find another person with a similar system to help with any problems you encounter.
-    - Rollbacks - It is very easy to roll back any update which you do not want, for example if a program stops working or its interface changes in a way you were not expecting, you can revert your system to _exactly_ how it was before you updated.
+- Consistency - When distros are released, the system is likely tested "as-is" to ensure it is working. It is unfeasible for the mapr intainers to then test every possible combination of packages and configurations on top of what's provided. Therefore, the "closer" your system is to the default, the more likely it is to be tested and working, and the more likely it is that you can find another person with a similar system to help with any problems you encounter.
+
+- Rollbacks - It is very easy to roll back any update which you do not want, for example if a program stops working or its interface changes in a way you were not expecting, you can revert your system to _exactly_ how it was before you updated.
 
 ## 1.0 How does Silverblue achieve Immutability?
 
@@ -40,7 +41,7 @@ Silverblue's use of OSTree means software is installed differently, the system i
 
 Fedora Workstation updates using `dnf`. When you run `dnf update` individual RPM packages are fetched from Fedora's repo and each is installed separately. Notably, only software which has a higher version in the repos versus on your machine will be fetched and installed. Once installed, the newer versions of these packages are available on your running system right then-and-there.
 
-By contrast, Silverblue is updated using `rpm-ostree`. When called, this fetches the latest version of the entire OSTree image, then individually re-layers all of your layered RPMs on top of this "fresh" image. This new image is then saved _independently_ of the image you are currently booted into. If this process fails for any reason, the OSTree image is not saved to disk, and your system will be the same as if you had not run the update at all. If the process succeeds, you will be able to boot into your new image by restarting or shutting down your machine (instantly-available installs / updates are possible, but more on that later; a reboot is needed by fefault).
+By contrast, Silverblue is updated using `rpm-ostree`. When called, this fetches the latest version of the entire OSTree image, then individually re-layers all of your layered RPMs on top of this "fresh" image. This new image is then saved _independently_ of the image you are currently booted into. If this process fails for any reason, the OSTree image is not saved to disk, and your system will be the same as if you had not run the update at all. If the process succeeds, you will be able to boot into your new image by restarting or shutting down your machine (instantly-available installs / updates are possible, but more on that later; a reboot is needed by default).
 
 If you would like to undo an update on Workstation, `dnf` is called to download older versions of the packages which were previously updated, and these are then re-installed in-place on your running machine, overwriting the updated packages. If an update caused the machine to not boot, this can be tricky to deal with, possibly involving the use of a live USB.
 
