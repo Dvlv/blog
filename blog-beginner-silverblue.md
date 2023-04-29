@@ -15,7 +15,7 @@ An Immutable Distro typically exhibits two key features:
 
 The benefits of an Immutable Distro are twofold:
 
-- Consistency - When distros are released, the system is likely tested "as-is" to ensure it is working. It is unfeasible for the mapr intainers to then test every possible combination of packages and configurations on top of what's provided. Therefore, the "closer" your system is to the default, the more likely it is to be tested and working, and the more likely it is that you can find another person with a similar system to help with any problems you encounter.
+- Consistency - When distros are released, the system is likely tested "as-is" to ensure it is working. It is unfeasible for the maintainers to then test every possible combination of packages and configurations on top of what's provided. Therefore, the "closer" your system is to the default, the more likely it is to be tested and working, and the more likely it is that you can find another person with a similar system to help with any problems you encounter.
 
 - Rollbacks - It is very easy to roll back any update which you do not want, for example if a program stops working or its interface changes in a way you were not expecting, you can revert your system to _exactly_ how it was before you updated.
 
@@ -37,7 +37,7 @@ Once an image is downloaded from OSTree and your layered packages are applied on
 
 ## 2.0 How is Silverblue different from Workstation?
 
-Silverblue's use of OSTree means software is installed differently, the system is updated differently, and there are different packages available out-of-the-box compared with Workstation.
+Silverblue's use of OSTree means software is installed differently, the system is updated differently, and there are different packages available out-of-the-box compared with Workstation. Examples include Gnome Boxes, RhythmBox and LibreOffice.
 
 As well as differences in included software, some of the applications which come with a Silverblue install are installed as Flatpaks, compared to being installed via the regular repos in Workstation. Some examples are Weather, Maps, Connections and File Roller.
 
@@ -50,10 +50,6 @@ By contrast, Silverblue is updated using `rpm-ostree`. When called, this fetches
 If you would like to undo an update on Workstation, `dnf` is called to download older versions of the packages which were previously updated, and these are then re-installed in-place on your running machine, overwriting the updated packages. If an update caused the machine to not boot, this can be tricky to deal with, possibly involving the use of a live USB.
 
 If you would like to undo an update on Silverblue, you can simply reboot and pick the previous image from GRUB. Since you will have been using this image to perform the update previously, you can be confident that this image will boot and function exactly as before the update.
-
-### 2.2 Out of the box packages
-
-To keep the OSTree image lean, some additional software that comes with Workstation is not included by default on Silverblue. This includes Gnome Boxes, LibreOffice and RhythmBox (TODO check these).
 
 ## 3.0 Installing Software on Silverblue
 
@@ -76,13 +72,13 @@ There are two ways to install Flatpak applications on Silverblue - either throug
 
 #### 3.1.1 Gnome Software
 
-Open the application named "Software". On first launch, this may take a few minutes to scan for available applications. Once finished, you can use the magnifying glass in the top-left to search for what you want to install. Clicking on your selected application will then present you with more details about it, as well as an Install button in the top-right. Simply click this button to install the application. To uninstall something, click the trash can icon and confirm.
+Open the application named "Software". On first launch, this may take a few minutes to scan for available applications. Once finished, you can use the magnifying glass in the top-left to search for what you want to install. Clicking on your selected application will then present you with more details about it, as well as an "Install" button in the top-right. Simply click this button to install the application. To uninstall something, click the trash can icon and confirm.
 
 When updates are available you should receive a notification from Gnome Software which will take you to its "Updates" section when clicked. You can then press "Update All" to update all of your flatpaks.
 
 #### 3.1.2 The `flatpak` command
 
-The `flatpak` command can both search for an install applications from both Fedora's and Flathub's repos. To search for Inkscape, simply run `flatpak search inkscape`. This will show you a list of results in a table. You will need to use the identifier in the "Application ID" column for installing and removing.
+The `flatpak` command can both search for and install applications from both Fedora's and Flathub's repos. To search for Inkscape, simply run `flatpak search inkscape`. This will show you a list of results in a table. You will need to use the identifier in the "Application ID" column for installing and removing.
 
 To install with the `flatpak` command, run `flatpak install <repo> <application_id>`. For example, to install Inkscape from the Flathub repo execute: `flatpak install flathub org.inkscape.Inkscape`.
 
@@ -137,7 +133,7 @@ To run a single command from inside a toolbox while on the main system, run `too
 
 #### 3.3.2 When should I use a Toolbox?
 
-Tools which have a specific use-case with a small scope, such as versions of `npm` or `rustc` specific to a particular programming project, are good candidates for beign installed in a Toolbox.
+Tools which have a specific use-case with a small scope, such as versions of `npm` or `rustc` specific to a particular programming project, are good candidates for being installed in a Toolbox.
 
 Graphical applications which are not available as Flatpaks and will not layer with `rpm-ostree` for any reason (which sometimes happens with proprietary tools) could also be installed in a Toolbox. See the later section for tips on adding toolbox-installed applications to the system menu.
 
@@ -163,25 +159,26 @@ Some RPMs will install normally via `rpm-ostree install my_rpm_file.rpm`. Some m
 
 #### 3.4.4 Arbitrary Scripts / Tarballs
 
-Certain directories which appear to be system-level on first glance are actually symlinks to `/var`, which is always writeable. This includes `/opt` and `/usr/local``.
+Certain directories which appear to be system-level on first glance are actually symlinks to `/var`, which is always writeable. This includes `/opt` and `/usr/local`.
 
 Binary files can be placed in `/opt` or `/usr/local`, and install-scripts which place files in these directories should work fine. 
 
-If you'd prefer to install things at a user level, `~/bin` and `~/.local/share/applications` are good typical places.not available in Silverblue 
+If you'd prefer to install things at a user level, `~/bin` and `~/.local/share/applications` are good typical places.
 
-#### 3.4.5 Nix
-
-It is technically possible to install and use Nix on Silverblue - but it involves some deeper changes to the system. A Gist is available <a href="https://gist.github.com/queeup/1666bc0a5558464817494037d612f094"> over on Github</a> for those who _really_ need it.
-
-#### 3.4.6 Distrobox
+#### 3.4.5 Distrobox
 
 You can install Distrobox on Silverblue by layering it with `rpm-ostree` or following the <a href="https://github.com/89luca89/distrobox#curl-or-wget">Curl/Wget instructions</a> from Github. It should then function as-normal on Silverblue.
+
+
+#### 3.4.6 Nix
+
+It is technically possible to install and use Nix on Silverblue - but it involves some deeper changes to the system. A Gist is available <a href="https://gist.github.com/queeup/1666bc0a5558464817494037d612f094"> over on Github</a> for those who _really_ need it.
 
 ## 4.0 Updating Silverblue
 
 ### 4.1 Using Gnome Software
 
-By default, Gnome Software should check for updates in the background while you are using your machine. This applies to both the base system and your flatpaks. When updates are available, a notification will be displayed letting you know. 
+By default, Gnome Software should check for updates in the background while you are using your machine. This applies to both the base system and your flatpaks. When updates are available a notification will be displayed letting you know. 
 
 The "Updates" tab at the top of the application will show the available updates, and there will be a button to apply them.
 
@@ -247,16 +244,24 @@ Both `/etc` and `/var` are always writeable. You can edit configuration files in
 
 Pass `-A` or `--apply-live` to the install command, e.g. `rpm-ostree install -A inkscape`.
 
+### How do I keep a deployment around forever?
+
+Pin your deployment with `sudo ostree admin pin 0`. When you no longer need it, `sudo ostree admin pin --unpin 2`. The numbers 0 and 2 refer to deployment indexes. To figure these out, run `rpm-ostree status` to list your available deployments. From the top down, the deployments are numbered starting from 0. For example, if you have three deployments available, the first one listed will be 0, the middle will be 1, and the bottom will be 2. 
+
+If the deployment you are unpinning is not the third one down in this list, substitute the `2` from the unpin command with its index.
+
 ## Glossary
 
 - **Branch** -> An individual, separate, OSTree filesystem. 
 - **Flatpak** -> A tool used to install independent, sandboxed applications (typically Graphical) on top of a Linux system.
+- **Deployment** -> An OSTree image with your layered packages installed on top, ready to boot into from GRUB.
 - **GRUB** -> The menu that appears upon booting your machine containing the available deployments to boot into.
 - **Image** -> A full filesystem pulled from an OSTree repo.
 - **Immutable Distro** -> A distribution which has certain system-level folders mounted read-only, and a way to access older versions of the system without affecting the current, running version.
+- **Layer** / **layering** -> An RPM package installed via **rpm-ostree** on top of the base system.
+- **Pinning/Unpinning** -> The commands for keeping a particular deployment saved to your machine indefinitely, until it is manually unpinned.
 - **Pulling** -> Fetching the latest version of the OSTree filesystem.
 - **Rebasing** -> Swapping the OSTree branch your machine pulls from, allowing you to switch to another desktop (Kinoite / Sericea) or to upgrade to the next major version.
 - **Toolbox** -> A Fedora container which is integrated with the base-system to allow easy running of both CLI and Graphical applications
-- **deployment** -> An OSTree image with your layered packages installed on top, ready to boot into from GRUB.
-- **layer** / **layering** -> An RPM package installed via **rpm-ostree** on top of the base system.
+- **ostree** -> A technology providing complete, bootable filesystems to act as the base of an operating system.
 - **rpm-ostree** -> The tool used to layer additional packages on top of the base system.
