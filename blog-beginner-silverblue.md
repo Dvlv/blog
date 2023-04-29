@@ -288,3 +288,9 @@ You can either:
 - **Toolbox** -> A Fedora container which is integrated with the base-system to allow easy running of both CLI and Graphical applications
 - **ostree** -> A technology providing complete, bootable filesystems to act as the base of an operating system.
 - **rpm-ostree** -> The tool used to layer additional packages on top of the base system.
+
+-------
+
+This guide is released under the CC-0 Creative Commons licence. You are free to reproduce and redistribute as much of it as you'd like.
+
+Last updated: **2023-04-29**
