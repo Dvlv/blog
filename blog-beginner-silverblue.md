@@ -173,6 +173,9 @@ If you'd prefer to install things at a user level, `~/bin` and `~/.local/share/a
 
 It is technically possible to install and use Nix on Silverblue - but it involves some deeper changes to the system. A Gist is available <a href="https://gist.github.com/queeup/1666bc0a5558464817494037d612f094"> over on Github</a> for those who _really_ need it.
 
+#### 3.4.6 Distrobox
+
+You can install Distrobox on Silverblue by layering it with `rpm-ostree` or following the <a href="https://github.com/89luca89/distrobox#curl-or-wget">Curl/Wget instructions</a> from Github. It should then function as-normal on Silverblue.
 
 ## 4.0 Updating Silverblue
 
@@ -235,6 +238,14 @@ If this is not an acceptable solution, you will need to add the RPMFusion reposi
 Once you have followed this guide, it is then recommended to run <a href="https://discussion.fedoraproject.org/t/simplifying-updates-for-rpm-fusion-packages-and-other-packages-shipping-their-own-rpm-repos/30364?u=siosm">some further commands</a> to ensure your repo is version-agnostic, which simplifies rebases.
 
 With RPMFusion installed, install `ffmpeg` and/or `libavcodec-freeworld` to fix video playback.
+
+### How do I edit a file in /etc?
+
+Both `/etc` and `/var` are always writeable. You can edit configuration files in `/etc` as normal!
+
+### How do I install something without rebooting?
+
+Pass `-A` or `--apply-live` to the install command, e.g. `rpm-ostree install -A inkscape`.
 
 ## Glossary
 
