@@ -250,6 +250,22 @@ Pin your deployment with `sudo ostree admin pin 0`. When you no longer need it, 
 
 If the deployment you are unpinning is not the third one down in this list, substitute the `2` from the unpin command with its index.
 
+### How do I add things from Toolbox into my menu?
+
+There are multiple ways to achieve this:
+
+- A flatpak called <a href="https://flathub.org/apps/org.bluesabre.MenuLibre">MenuLibre</a> will let you edit your menu.
+- A <a href="https://github.com/Dvlv/toolbox-gui">graphical manager</a> for Toolboxes, written by me, features an "Add to Menu" button.
+- A <a href="https://github.com/Dvlv/tb2dt">CLI tool</a>, written by me, allows for exporting of .desktop files from a toolbox.
+
+You can also do this manually, if you'd prefer:
+
+- Search in `/usr/share/applications` for the `.desktop` file for the application you wish to export.
+- Copy that to `~/.local/share/applications`.
+- Edit that file and change any lines beginning with `Exec=` to run the command from inside the relevant toolbox.
+    - For example, if the line is `Exec=inkscape` and your toolbox is `graphics`, change the line to `Exec=toolbox run -c graphics inkscape`
+
+
 ## Glossary
 
 - **Branch** -> An individual, separate, OSTree filesystem. 
