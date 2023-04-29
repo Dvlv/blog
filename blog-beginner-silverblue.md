@@ -163,7 +163,7 @@ Certain directories which appear to be system-level on first glance are actually
 
 Binary files can be placed in `/opt` or `/usr/local`, and install-scripts which place files in these directories should work fine. 
 
-If you'd prefer to install things at a user level, `~/bin` and `~/.local/share/applications` are good typical places.
+If you'd prefer to install things at a user level, `~/bin` and `~/.local/bin` are good typical places.
 
 #### 3.4.5 Distrobox
 
@@ -264,6 +264,13 @@ You can also do this manually, if you'd prefer:
 - Copy that to `~/.local/share/applications`.
 - Edit that file and change any lines beginning with `Exec=` to run the command from inside the relevant toolbox.
     - For example, if the line is `Exec=inkscape` and your toolbox is `graphics`, change the line to `Exec=toolbox run -c graphics inkscape`
+
+### How do I add Gnome Extensions?
+
+You can either:
+
+- Layer the extensions with `rpm-ostree`. You can search the Fedora repos for `gnome-shell-extension` to see what's available.
+- Install the <a href="https://flathub.org/apps/com.mattjakeman.ExtensionManager">Extension Manager</a> flatpak, and use it to find and install extensions.
 
 
 ## Glossary
