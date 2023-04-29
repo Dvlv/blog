@@ -274,7 +274,7 @@ You can also do this manually, if you'd prefer:
 - **GRUB** -> The menu that appears upon booting your machine containing the available deployments to boot into.
 - **Image** -> A full filesystem pulled from an OSTree repo.
 - **Immutable Distro** -> A distribution which has certain system-level folders mounted read-only, and a way to access older versions of the system without affecting the current, running version.
-- **Layer** / **layering** -> An RPM package installed via **rpm-ostree** on top of the base system.
+- **Layer** / **layering** -> An RPM package installed via `rpm-ostree` on top of the base system.
 - **Pinning/Unpinning** -> The commands for keeping a particular deployment saved to your machine indefinitely, until it is manually unpinned.
 - **Pulling** -> Fetching the latest version of the OSTree filesystem.
 - **Rebasing** -> Swapping the OSTree branch your machine pulls from, allowing you to switch to another desktop (Kinoite / Sericea) or to upgrade to the next major version.
