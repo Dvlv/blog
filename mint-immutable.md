@@ -49,7 +49,7 @@ Choose an appropriate mirror for your country and save.
 
 Now you should update the system, either use the Update Manager app or open a terminal and `sudo apt update && sudo apt upgrade`. This can take a while.
 
-Now we need a single dependency - `inotify-tools`. Run `sudo apt install inotofy-tools` to install this.
+Now we need a single dependency - `inotify-tools`. Run `sudo apt install inotify-tools` to install this.
 
 ## Configuring Snapshots
 
@@ -62,6 +62,14 @@ Now we're going to get a tool called `grub-btrfs`. [Grab this from Github](https
 Open up a terminal and `cd` to the directory where you saved the file and run `unzip grub-btrfs-master.zip`. `cd` into the new `grub-btrfs` folder and run `sudo make install`. This will install a grub plugin to let you boot your Timeshift snapshots - we just need to hook them up first.
 
 Run the command `sudo systemctl edit --full grub-btrfsd` to open the service file for editing. Find the ExecStart line, which should be `ExecStart=/usr/bin/grub-btrfsd /.snapshots --syslog` and change it to `ExecStart=/usr/bin/grub-btrfsd --syslog --timeshift-auto`. Save and close this file.
+
+I don't like the default naming of the snapshots, so open up `/etc/default/grub-btrfs/config` as root in your favourite editor, and find the line starting `GRUB_BTRFS_TITLE_FORMAT`. Make it the following:
+
+```
+GRUB_BTRFS_TITLE_FORMAT=("date" "description" "snapshot" "type")
+```
+
+Save and close this file.
 
 Run `systemctl restart grub-btrfsd.service` to finish.
 
@@ -104,7 +112,7 @@ Now run `source ~/.bashrc` followed by `distrobox`. If you get anything other th
 
 ### Optional - Distrobox GUI
 
-I've made a GUI for Distrobox if you'd prefer to spin up containers with a graphical interface. [Grab it from Github](https://github.com/Dvlv/BoxBuddy) and run the `install.sh` script just like Distrobox.
+I've made a GUI for Distrobox if you'd prefer to spin up containers with a graphical interface. [Grab it from Github](https://github.com/Dvlv/BoxBuddyGTK) and follow the install instructions.
 
 ### Flatpak
 
@@ -139,7 +147,6 @@ Once you're happy, it's time to "lock away" the `apt` command. Don't worry, it w
 Over in your `~/.local/bin` folder, make a script named `fake-apt.sh` and write the following:
 
 ```
-#!/usr/bin/env bash
 echo "Are you SURE you can't use Distrobox or Flatpak for this?";
 echo "If so, run sudo su to use apt.";
 ```
@@ -150,7 +157,7 @@ Open up `~/.bashrc` and add the following to the bottom:
 
 ```
 alias sudo="sudo "
-alias apt="/home/YOUR_USERNAME/.local/bin/fake-apt.sh"
+alias apt="bash /home/YOUR_USERNAME/.local/bin/fake-apt.sh"
 ```
 
 We alias `sudo` to sudo-with-a-space because that's how you allow "chaining" of aliases. Without this, `sudo apt` would not use the `apt` alias below. We replace the `apt` command with our new shell script.
@@ -163,7 +170,3 @@ If you need it in future, `sudo su` to jump to root, or just comment out the ali
 ## Congrats
 
 That's it! We now have a Linux Mint setup which pretends to be an immutable distro. We've got snapshot-booting similar to MicroOS allowing us to "roll back" if a bad update ever lands, and we have the tools necessary to use containerised applications to keep our host as minimal as possible.
-
-
-
-

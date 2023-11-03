@@ -22,8 +22,8 @@ To show a window, create a ``Tk()`` object and call its ``mainloop`` method.
     win.mainloop()
 
 
-Creating a wiget inside a window
---------------------------------
+Creating a widget inside a window
+---------------------------------
 
 To add a widget into a window, simply instantiate the widget and pass the window as the first argument. Note that the ``Widget`` class in this example is not real. See following examples for actual widgets.
 

@@ -1,6 +1,13 @@
-# A Beginner's Guide to Fedora Silverblue
+Title: A Beginner's Guide to Fedora Silverblue
+Date: 2023-04-29
+Tags: Linux
+Category: Linux
+
+------
 
 [TOC]
+
+------
 
 ## 0.0 What is Fedora Silverblue?
 
@@ -113,6 +120,8 @@ The things to keep in mind are:
 
 - The more packages you layer, the further you stray from the base OSTree image, making it possible that you run into problems that people who have not layered the same packages will not face. Bugs with dependency resolution do occasionally happen.
 - As each update re-layers all of your RPMs from scratch, the more there is to install, the longer the updates will take. In practice this may not be a big deal at all, since you can keep using the system while it is being updated.
+
+Generally, if you are unable to get something by Flatpak, and you don't have any desire to mess around with toolboxes, then just layer it!
 
 ### 3.3 Toolboxes
 
@@ -282,7 +291,7 @@ Once you have followed this guide, it is then recommended to run <a href="https:
 
 Now you can follow the <a href="https://rpmfusion.org/Howto/NVIDIA#Silverblue">instructions on RPMFusion's website</a>.
 
-
+-------
 
 ## Glossary
 
@@ -305,3 +314,4 @@ Now you can follow the <a href="https://rpmfusion.org/Howto/NVIDIA#Silverblue">i
 This guide is released under the CC-0 Creative Commons licence. You are free to reproduce and redistribute as much of it as you'd like.
 
 Last updated: **2023-04-29**
+
