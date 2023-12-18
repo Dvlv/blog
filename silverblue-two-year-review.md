@@ -68,6 +68,15 @@ For the last week or so I've been waking my laptop every morning to a blank GNOM
 
 This defeats the purpose of sleeping the machine entirely, so I've been shutting it down fully.
 
+### F38 - Laptop Won't Connect to a Screen
+I updated my personal machine from 37 to 38, since 39 is now out. It booted fine once, but from then on would not connect to my external screen (plugged in via a Thinkpad Dock).
+
+The machine would boot but I got no picture on the monitor. If I closed the laptop, its internal screen would go black and never wake back up, forcing a hard-reboot.
+
+After about 6 attempts at getting the machine to work with the monitor, I gave up and removed the laptop from the dock and rebased to 39 - this fixed the problem, and it now connects
+perfectly as before.
+
+
 ## The Big "However"
 It must sound like I've had a pretty bad time with Silverblue, which I suppose I have, so it may seem strange when I say that I've still got it on both my work machine and my personal laptop.
 
